@@ -1,0 +1,7 @@
+services:
+  ssh-ids:
+    build: .
+    container_name: ssh-ids-ml
+    network_mode: "host"
+    privileged: true
+    restart: unless-stopped
