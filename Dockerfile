@@ -20,4 +20,5 @@ COPY live_ssh_ids_ml.py .
 COPY ssh_ids_model.pkl .
 
 # tshark needs root → OK in container
-CMD ["python", "-u", "live_ssh_ids_ml.py"]
+CMD ["python3", "-u", "live_ssh_ids_ml.py"]
+
