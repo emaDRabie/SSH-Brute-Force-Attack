@@ -23,9 +23,8 @@ The core idea is to perform **network-flow feature extraction** from captured tr
 
 ## Architecture / Workflow Diagram
 
-> Placeholder (replace with your actual diagram later):
 
-![Architecture Diagram](path/to/image.png)
+![Architecture Diagram](workflow.svg)
 
 **High-level pipeline:**  
 **Lab Setup → Wireshark Capture → Python Feature Extraction → CSV Dataset → ML Training & Evaluation**
