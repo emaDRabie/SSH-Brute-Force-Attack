@@ -1,12 +1,13 @@
 FROM python:3.10-slim
 
-# Install tshark + dependencies
+# Prevent interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+
+# Install tshark + tcpdump
 RUN apt-get update && \
     apt-get install -y tshark tcpdump && \
     rm -rf /var/lib/apt/lists/*
-
-# Prevent interactive prompt
-ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /app
 
@@ -18,5 +19,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY live_ssh_ids_ml.py .
 COPY ssh_ids_model.pkl .
 
-# tshark needs root
-CMD ["python", "live_ssh_ids_ml.py"]
+# tshark needs root → OK in container
+CMD ["python", "-u", "live_ssh_ids_ml.py"]
