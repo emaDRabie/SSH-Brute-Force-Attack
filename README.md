@@ -31,6 +31,51 @@ The core idea is to perform **network-flow feature extraction** from captured tr
 
 ---
 
+## 🔍 Feature Set (Final & Production-Grade)
+
+The following features are **window-based**, **encryption-safe**, and **attack-proven**:
+
+| Feature | Description |
+|------|-------------|
+| mean_inter_arrival | Average packet inter-arrival time |
+| std_inter_arrival | Variability in packet timing |
+| burstiness | Traffic burst behavior |
+| syn_count | TCP SYN packets |
+| rst_count | TCP RST packets |
+| syn_ratio | SYN packets / total |
+| rst_ratio | RST packets / total |
+| zero_payload_ratio | Zero-payload packet ratio |
+| flow_count_per_window | New flows per time window |
+
+---
+
+## 📂 Repository Structure
+
+```
+ssh-bruteforce-ml-ids/
+│
+├── Data/
+│   └── train_dataset1.csv       
+│
+├── Model/ 
+│   └── model.ipynb            
+│
+├── Scripts/
+│   ├── merge.py       
+│   └── csv.py
+│
+├── ssh_ids_model.pkl 
+├── live_ssh_ids_ml.py 
+├── Dockerfile 
+├── docker-compose.yml
+├── .gitignore
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+---
+
 ## Prerequisites
 
 ### Lab / Environment
@@ -48,7 +93,7 @@ Typical dependencies include:
 - `pandas`
 - `numpy`
 - `scikit-learn`
-- `scapy`
+- `joblib`
 
 (Install via `requirements.txt` in the next section.)
 
@@ -57,11 +102,35 @@ Typical dependencies include:
 ## Installation & Setup
 
 ```bash
-git clone https://github.com/<your-username>/SSH-BF-Hunter.git
-cd SSH-BF-Hunter
-```
+git clone https://github.com/emaDRabie/SSH-Brute-Force-Attack.git
+cd SSH-Brute-Force-Attack
+``` 
+---
 
-Create and activate a virtual environment (recommended):
+🚨 Deploy IDS Locally (Victim / Target):
+
+---
+
+1. Install Docker and Docker Compose 
+2. Run Docker compose
+```bash
+docker compose up --build
+```
+3. Monitoring the log file
+```bash
+docker logs -f ssh-ids-ml
+```
+3. Stop IDS
+```bash
+docker compose down
+```
+---
+
+Collect Datasets
+
+---
+
+Create and activate a virtual environment:
 
 ```bash
 python3 -m venv .venv
