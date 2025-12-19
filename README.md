@@ -124,7 +124,7 @@ docker compose up --build
 ```bash
 docker logs -f ssh-ids-ml
 ```
-3. Stop IDS
+4. Stop IDS
 ```bash
 docker compose down
 ```
