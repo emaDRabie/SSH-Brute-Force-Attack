@@ -105,13 +105,17 @@ Typical dependencies include:
 git clone https://github.com/emaDRabie/SSH-Brute-Force-Attack.git
 cd SSH-Brute-Force-Attack
 ``` 
+
 ---
 
 🚨 Deploy IDS Locally (Victim / Target):
 
 ---
 
-1. Install Docker and Docker Compose 
+1. Install Docker and Docker Compose from: 
+```text
+https://docs.docker.com/engine/install/
+```
 2. Run Docker compose
 ```bash
 docker compose up --build
@@ -124,9 +128,6 @@ docker logs -f ssh-ids-ml
 ```bash
 docker compose down
 ```
----
-
-Collect Datasets
 
 ---
 
