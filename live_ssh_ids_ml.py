@@ -10,11 +10,10 @@ from collections import defaultdict
 # ======================================================
 INTERFACE = "ens33"        # Docker: eth0 | Host: ens33 / wlan0
 WINDOW_SIZE = 15          # seconds (RECOMMENDED: 8–15)
-SLIDE_SIZE = 10            # seconds
+SLIDE_SIZE = 5            # seconds
 SSH_PORT = 22
 
 MODEL_PATH = "ssh_ids_model.pkl"
-ALERT_THRESHOLD = 0.90    # ML probability threshold
 
 # ======================================================
 # LOAD MODEL (BUNDLE)
@@ -193,8 +192,9 @@ try:
             # ML PREDICTION
             # ======================================================
             prob = model.predict_proba(X)[0][1]
+            ALERT = int(model.predict(X)[0])
             results={"timestamp": time.ctime(times[0]), "source_ip": src, "destination_ip": dst, "probability": float(prob), "flow_count_per_window": flow_count_per_window, "attack": "SSH BRUTE-FORCE", "features": feature_map}
-            if prob >= ALERT_THRESHOLD:
+            if ALERT:
                 print("\n[🚨] SSH BRUTE-FORCE DETECTED!")
                 print(results)
                 print("-" * 60)
