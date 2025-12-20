@@ -24,7 +24,7 @@ The core idea is to perform **network-flow feature extraction** from captured tr
 ## Architecture / Workflow Diagram
 
 
-![Architecture Diagram](workflow.svg)
+![Architecture Diagram](Visualization/workflow.svg)
 
 **High-level pipeline:**  
 **Lab Setup → Wireshark Capture → Python Feature Extraction → CSV Dataset → ML Training & Evaluation**
@@ -272,14 +272,14 @@ Supervised classifiers under evaluation may include:
 
 This section contains **placeholders** for plots you will add later. Replace the image paths and keep captions aligned with your final results.
 
-### Visualization 1 — Class Balance Graph (Placeholder)
-> Shows the number of samples in each class (**Normal vs Attack**). This is critical to understand whether the dataset is imbalanced and whether techniques like stratified splits, class weights, or resampling are needed.
+### Visualization 1 — Class Balance Graph
+> Shows the number of samples in each class (**Normal = 1397 vs Attack = 2095**). This is critical to understand whether the dataset is imbalanced and whether techniques like stratified splits, class weights, or resampling are needed.
 
-![Class Balance Graph](path/to/class_balance.png)
+![Class Balance Graph](Visualization/class_balance_graph.svg)
 
 ---
 
-### Visualization 2 — Confusion Matrix (Best Model) (Placeholder)
+### Visualization 2 — Confusion Matrix (Best Model)
 > Displays **True Positives / True Negatives / False Positives / False Negatives** for the best-performing model. This directly reflects how well the model detects brute-force traffic without over-flagging legitimate administrative sessions.
 
 ![Confusion Matrix](path/to/confusion_matrix.png)
