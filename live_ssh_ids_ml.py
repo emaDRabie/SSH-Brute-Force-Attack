@@ -147,14 +147,13 @@ try:
             # -------------------------------
             syn_count = sum(1 for f in flags_list if f & 0x02)
             rst_count = sum(1 for f in flags_list if f & 0x04)
-
             syn_ratio = syn_count / pkt_count
             # rst_ratio = rst_count / pkt_count
 
             # -------------------------------
             # Payload features
             # -------------------------------
-            zero_payload_ratio = sum(1 for s in sizes if s == 0) / pkt_count
+            # zero_payload_ratio = sum(1 for s in sizes if s == 0) / pkt_count
 
             flow_count_per_window = len(flows)
 
@@ -179,9 +178,7 @@ try:
                 "unique_packet_sizes": unique_packet_sizes,
                 "zero_payload_count": zero_payload_count,
                 "syn_ratio": syn_ratio,
-                "zero_payload_ratio": zero_payload_ratio,
                 "flow_count_per_window": flow_count_per_window,
-                
             }
 
             # ======================================================
@@ -196,16 +193,17 @@ try:
             # ML PREDICTION
             # ======================================================
             prob = model.predict_proba(X)[0][1]
-
+            results={"timestamp": time.ctime(times[0]), "source_ip": src, "destination_ip": dst, "probability": float(prob), "flow_count_per_window": flow_count_per_window, "attack": "SSH BRUTE-FORCE", "features": feature_map}
             if prob >= ALERT_THRESHOLD:
-                print("\n🚨 SSH BRUTE-FORCE DETECTED (ML)")
-                print(f"Source IP      : {src}")
-                print(f"Destination IP : {dst}")
-                print(f"Probability    : {prob:.2f}")
-                print(f"Flows/window   : {flow_count_per_window}")
+                print("\n[🚨] SSH BRUTE-FORCE DETECTED!")
+                print(results)
                 print("-" * 60)
-                print({"timestamp": times[0], "attack": "SSH BRUTE-FORCE", "source_ip": src, "destination_ip": dst, "probability": prob, "flow_count_per_window": flow_count_per_window,"features": feature_map})
-                print("-" * 60)
+                # print("")
+                # print(f"Source IP      : {src}")
+                # print(f"Destination IP : {dst}")
+                # print(f"Probability    : {prob:.2f}")
+                # print(f"Flows/window   : {flow_count_per_window}")
+                # print("-" * 60)
 
 except KeyboardInterrupt:
     print("\n[!] IDS stopped by user")
