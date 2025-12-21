@@ -282,14 +282,14 @@ This section contains **placeholders** for plots you will add later. Replace the
 ### Visualization 2 — Confusion Matrix (Best Model)
 > Displays **True Positives / True Negatives / False Positives / False Negatives** for the best-performing model. This directly reflects how well the model detects brute-force traffic without over-flagging legitimate administrative sessions.
 
-![Confusion Matrix](path/to/confusion_matrix.png)
+![Confusion Matrix](Visualization/confusion_matrix.png)
 
 ---
 
 ### Visualization 3 — Feature Importance Plot (Placeholder)
 > Highlights which engineered features contributed most to detection (e.g., **mean inter-arrival time**, **packet rate**, **total bytes**, **window-based counts**). This improves interpretability and helps validate the model’s behavior against expected SSH brute-force patterns.
 
-![Feature Importance](path/to/feature_importance.png)
+![Feature Importance](Visualization/feature_importance.png)
 
 ---
 
