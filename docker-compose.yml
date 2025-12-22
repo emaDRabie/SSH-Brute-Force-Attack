@@ -5,3 +5,5 @@ services:
     network_mode: "host"
     privileged: true
     restart: unless-stopped
+    cpus: "0.5"        # limit to half a CPU
+    mem_limit: 512m    # limit to 512 MiB
